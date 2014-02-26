@@ -1,5 +1,5 @@
 Ext.define('RiskiMarket.view.Controls', {
-    extend: 'Ext.panel.Panel',
+    extend: 'Ext.container.Container',
     requires:[
         'RiskiMarket.view.Login',
         'RiskiMarket.view.Cart'

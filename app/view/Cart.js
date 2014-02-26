@@ -7,5 +7,5 @@ Ext.define('RiskiMarket.view.Cart', {
         type: 'fit'
     },
     
-    items: [{ html: 'cart' }]
+    html: 'cart'
 });
