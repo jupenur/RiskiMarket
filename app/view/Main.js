@@ -2,7 +2,10 @@ Ext.define('RiskiMarket.view.Main', {
     extend: 'Ext.container.Container',
     requires:[
         'Ext.tab.Panel',
-        'Ext.layout.container.Border'
+        'Ext.layout.container.Border',
+        'RiskiMarket.view.Products',
+        'RiskiMarket.view.Controls',
+        'RiskiMarket.view.Help',
     ],
     
     xtype: 'app-main',
@@ -13,14 +16,14 @@ Ext.define('RiskiMarket.view.Main', {
 
     items: [{
         region: 'west',
-        xtype: 'panel',
-        title: 'west',
-        width: 150
+        xtype: 'app-products',
+        width: '33%'
     },{
         region: 'center',
-        xtype: 'tabpanel',
-        items:[{
-            title: 'Center Tab 1'
-        }]
+        xtype: 'app-controls',
+    },{
+        region: 'east',
+        xtype: 'app-help',
+        width: '33%'
     }]
 });
