@@ -1,5 +1,9 @@
 Ext.define('RiskiMarket.view.Controls', {
     extend: 'Ext.container.Container',
+    requires:[
+        'RiskiMarket.view.Login',
+        'RiskiMarket.view.Cart'
+    ],
 
     xtype: 'app-controls',
 
@@ -7,7 +11,8 @@ Ext.define('RiskiMarket.view.Controls', {
         type: 'card'
     },
     
-    items: [{
-        html: 'controls'
-    }]
+    items: [
+        { xtype: 'app-login' },
+        { xtype: 'app-cart' }
+    ]
 });
