@@ -8,7 +8,10 @@ Ext.define('RiskiMarket.Application', {
     ],
 
     controllers: [
-        // TODO: add controllers here
+        'Main',
+        'Products',
+        'Controls',
+        'Help'
     ],
 
     stores: [

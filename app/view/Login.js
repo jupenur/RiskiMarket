@@ -7,5 +7,5 @@ Ext.define('RiskiMarket.view.Login', {
         type: 'fit'
     },
     
-    html: 'login'
+    items: [{ html: 'login' }]
 });
