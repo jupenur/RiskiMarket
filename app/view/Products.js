@@ -1,11 +1,14 @@
 Ext.define('RiskiMarket.view.Products', {
-    extend: 'Ext.container.Container',
-
+    extend: 'Ext.grid.Panel',
     xtype: 'app-products',
 
-    layout: {
-        type: 'fit'
+    border: false,
+    viewConfig: {
+        stripeRows: true
     },
-    
-    html: 'products'
+    columns: [
+        { header: 'Nimi',      dataIndex: 'name',  flex: 1 },
+        { header: 'Hinta / €', dataIndex: 'price', width: 100 },
+    ],
+    store: 'Products'
 });

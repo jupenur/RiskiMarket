@@ -1,3 +1,5 @@
 Ext.define('RiskiMarket.controller.Products', {
-    extend: 'Ext.app.Controller'
+    extend: 'Ext.app.Controller',
+
+    stores: [ 'Products' ]
 });
