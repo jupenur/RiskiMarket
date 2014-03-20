@@ -28,9 +28,9 @@ Ext.define('RiskiMarket.controller.Main', {
         // input modes
         this.inputMode = RiskiMarket.controller.Main.InputMode.ID;
         var inputBuffer = '', controller = this;
-        document.documentElement.addEventListener('keypress', function (e) {
+        document.documentElement.addEventListener('keydown', function (e) {
             if (controller.inputMode === RiskiMarket.controller.Main.InputMode.ID) {
-                var char = String.fromCharCode(e.charCode);
+                var char = String.fromCharCode(e.keyCode);
                 if (e.keyCode === 13) { // enter
                     controller.fireEvent('input', inputBuffer);
                     inputBuffer = '';
