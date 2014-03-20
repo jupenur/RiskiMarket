@@ -9,24 +9,6 @@ Ext.define('RiskiMarket.view.Controls', {
         width: '100%'
     },
 
-    initComponent: function () {
-        this.callParent(arguments);
-
-        Ext.create('Ext.window.Window', {
-            title: 'Kirjaudu sisään',
-            closable: false,
-            draggable: false,
-            resizable: false,
-            width: 250,
-            layout: 'fit',
-            items: {
-                html: '<p>Lue avainkortti kirjautuaksesi sisään ja tehdäksesi ostoksia.</p>',
-                bodyPadding: '0 20 0 20',
-                border: false
-            }
-        }).show();
-    },
-
     items: [
         {
             html: 'product info',

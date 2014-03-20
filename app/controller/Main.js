@@ -6,6 +6,7 @@ Ext.define('RiskiMarket.controller.Main', {
         'RiskiMarket.controller.Controls',
         'RiskiMarket.controller.Help',
         'RiskiMarket.controller.Products',
+        'RiskiMarket.controller.Login'
     ],
 
     statics: {
@@ -22,6 +23,7 @@ Ext.define('RiskiMarket.controller.Main', {
         this.getController('Controls');
         this.getController('Help');
         this.getController('Products');
+        this.getController('Login');
 
         // input modes
         this.inputMode = RiskiMarket.controller.Main.InputMode.ID;
