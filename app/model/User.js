@@ -1,11 +1,9 @@
 Ext.define('RiskiMarket.model.User', {
     extend: 'Ext.data.Model',
-    
-    fields: [ 'id', 'name', 'balance' ],
-    idProperty: 'id',
-    
-    proxy: {
-        type: 'localstorage',
-        id: 'users'
-    }
+
+    fields: [
+        { name: 'key',     type: 'string' },
+        { name: 'name',    type: 'string' },
+        { name: 'balance', type: 'int'    }
+    ]
 });

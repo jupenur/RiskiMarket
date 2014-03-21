@@ -5,9 +5,9 @@ Ext.define('RiskiMarket.view.Main', {
         'Ext.layout.container.Border',
         'RiskiMarket.view.Products',
         'RiskiMarket.view.Controls',
-        'RiskiMarket.view.Help',
+        'RiskiMarket.view.Help'
     ],
-    
+
     xtype: 'app-main',
 
     layout: {

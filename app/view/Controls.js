@@ -8,31 +8,25 @@ Ext.define('RiskiMarket.view.Controls', {
     defaults: {
         width: '100%'
     },
-    
-    initComponent: function () {
-        this.callParent(arguments);
-        
-        Ext.create('Ext.window.Window', {
-            title: 'Kirjaudu sisään',
-            closable: false,
-            draggable: false,
-            resizable: false,
-            padding: '0 20 0 20',
-            border: false,
-            html: '<p>Lue avainkortti kirjautuaksesi sisään ja tehdäksesi ostoksia.</p>',
-            height: 100,
-            width: 250
-        }).show();
-    },
-    
+
     items: [
         {
             html: 'product info',
             height: 100
         },
         {
-            html: 'cart',
-            flex: 1
+            xtype: 'grid',
+            flex: 1,
+            columns: [
+                { header: 'Nimi',      dataIndex: 'name',  flex: 1 },
+                { header: 'Hinta / €', dataIndex: 'price', xtype: 'numbercolumn', format: '0.00', align: 'right', width: 100 },
+            ],
+            store: Ext.create('Ext.data.Store', {
+                model: 'RiskiMarket.model.Product',
+                autoLoad: true,
+                autoSync: true,
+                proxy: 'memory'
+            })
         },
         {
             html: 'total',
