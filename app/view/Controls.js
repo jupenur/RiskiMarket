@@ -19,7 +19,7 @@ Ext.define('RiskiMarket.view.Controls', {
             flex: 1,
             columns: [
                 { header: 'Nimi',      dataIndex: 'name',  flex: 1 },
-                { header: 'Hinta / €', dataIndex: 'price', width: 100 },
+                { header: 'Hinta / €', dataIndex: 'price', xtype: 'numbercolumn', format: '0.00', align: 'right', width: 100 },
             ],
             store: Ext.create('Ext.data.Store', {
                 model: 'RiskiMarket.model.Product',
