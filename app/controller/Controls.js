@@ -2,7 +2,8 @@ Ext.define('RiskiMarket.controller.Controls', {
     extend: 'Ext.app.Controller',
 
     refs: [
-        { ref: 'controls', selector: 'app-controls' }
+        { ref: 'controls', selector: 'app-controls'        },
+        { ref: 'cart',     selector: 'app-controls > grid' }
     ],
 
     init: function () {
@@ -19,9 +20,9 @@ Ext.define('RiskiMarket.controller.Controls', {
 
                     product: function (product) {
                         if (this.getControls().isDisabled()) {
-                            this.getControls().setActiveProduct(product);
+                            this.setActiveProduct(product);
                         } else {
-                            this.getControls().addProduct(product.copy());
+                            this.addProduct(product.copy());
                         }
                     },
 
@@ -34,5 +35,32 @@ Ext.define('RiskiMarket.controller.Controls', {
                 }
             }
         });
+    },
+
+    getProductsStore: function () {
+        return this.getCart().getStore();
+    },
+
+    setActiveProduct: function (product) {
+        this.getCart().getSelectionModel().select(product);
+    },
+
+    getActiveProduct: function (product) {
+        var selection = this.getCart().getSelectionModel().getSelection();
+        if (selection.length === 0) {
+            return null;
+        } else {
+            return selection[0];
+        }
+    },
+
+    addProduct: function (product) {
+        var store = this.getProductsStore();
+        store.insert(store.count(), product);
+        this.setActiveProduct(product);
+    },
+
+    removeProduct: function () {
+        this.getProductsStore().remove(this.getActiveProduct());
     }
 });
