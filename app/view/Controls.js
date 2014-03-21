@@ -29,8 +29,16 @@ Ext.define('RiskiMarket.view.Controls', {
             })
         },
         {
-            html: 'total',
-            height: 100
-        }
+            xtype: 'panel',
+			title: 'Total',
+			items: [
+			{
+				xtype: 'displayfield',
+				fieldlabel: 'saldo',
+				value: '12345',
+				height: 100
+			}
+			]
+		}		
     ]
 });
