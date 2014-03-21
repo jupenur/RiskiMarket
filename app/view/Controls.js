@@ -64,6 +64,6 @@ Ext.define('RiskiMarket.view.Controls', {
     },
 
     removeProduct: function () {
-
+        this.getStore().remove(this.getActiveProduct());
     }
 });
