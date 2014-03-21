@@ -15,6 +15,7 @@ Ext.define('RiskiMarket.View.help.HelpSection',{
 	helpId: 42,
 	helpText:'Lorem Fucking Ipsum!',
 	selectedColor: '#65EBBE',
+	backgroundColor: '#333333',
 	//baseCls: 'x-plain',
 	
 	statics: {
@@ -50,7 +51,7 @@ Ext.define('RiskiMarket.View.help.HelpSection',{
 	defaults: {		
 		//width: '100%',
 		layout : 'fit',
-		bodyPadding: 5
+		bodyPadding: 2
 	},
 	items: [
 		{	
@@ -73,20 +74,26 @@ Ext.define('RiskiMarket.View.help.HelpSection',{
 			},
 				
 			bodyStyle: {
-				backgroundColor: '#E0F8FF'
+				backgroundColor: '#333333'
 			},
 		
-			width: 500,
+			width: 320,
 			html: "Default teksti homonaama!",
 	
 			//html: "Lorem Fucking Ipsum"		
 		}
 	],
 	
-	selected: function() {
+	select: function() {
 		var text = this.getComponent('textPanel');
 		text.setBodyStyle("backgroundColor", this.selectedColor);
 		console.log(this.selectedColor);
+	},
+	unselect: function() {
+		var text = this.getComponent('textPanel');
+		text.setBodyStyle("backgroundColor", this.backgroundColor);
+		console.log(this.selectedColor);
 	}
+	
 	
 })
