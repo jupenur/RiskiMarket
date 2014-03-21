@@ -25,7 +25,10 @@ Ext.define('RiskiMarket.view.Controls', {
                 model: 'RiskiMarket.model.Product',
                 autoLoad: true,
                 autoSync: true,
-                proxy: 'memory'
+                proxy: 'memory',
+                append: function (product) {
+                    this.insert(this.count(), product);
+                }
             })
         },
         {
@@ -34,13 +37,16 @@ Ext.define('RiskiMarket.view.Controls', {
         }
     ],
 
+    getStore: function () {
+        return this.getComponent(1).getStore();
+    },
+
     setActiveProduct: function (product) {
 
     },
 
     addProduct: function (product) {
-        var store = this.getComponent(1).getStore();
-        store.insert(store.count(), product.copy());
+        this.getStore().append(product.copy());
         this.setActiveProduct(product);
     }
 });
