@@ -15,12 +15,31 @@ Ext.define('RiskiMarket.view.Controls', {
             height: 100
         },
         {
-            html: 'cart',
-            flex: 1
+            xtype: 'grid',
+            flex: 1,
+            columns: [
+                { header: 'Nimi',      dataIndex: 'name',  flex: 1 },
+                { header: 'Hinta / €', dataIndex: 'price', width: 100 },
+            ],
+            store: Ext.create('Ext.data.Store', {
+                model: 'RiskiMarket.model.Product',
+                autoLoad: true,
+                autoSync: true,
+                proxy: 'memory'
+            })
         },
         {
             html: 'total',
             height: 100
         }
-    ]
+    ],
+
+    setActiveProduct: function (product) {
+
+    },
+
+    addProduct: function (product) {
+        this.getComponent(1).getStore().add(product);
+        this.setActiveProduct(product);
+    }
 });

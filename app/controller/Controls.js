@@ -15,6 +15,14 @@ Ext.define('RiskiMarket.controller.Controls', {
 
                     logout: function (user) {
                         this.getControls().disable();
+                    },
+
+                    product: function (product) {
+                        if (this.getControls().isDisabled()) {
+                            this.getControls().setActiveProduct(product);
+                        } else {
+                            this.getControls().addProduct(product);
+                        }
                     }
                 }
             }
