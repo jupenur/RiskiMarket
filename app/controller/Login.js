@@ -16,7 +16,8 @@ Ext.define('RiskiMarket.controller.Login', {
                 '*': {
                     input: function (input) {
                         if (this.user === null) {
-                            this.user = this.getUsersStore().findRecord('key', input);
+                            this.user = this.getUsersStore().findRecord(
+                                'key', input, 0, false, true, true);
                             if (this.user !== null) {
                                 this.fireEvent('login', this.user);
                                 return false;

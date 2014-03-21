@@ -9,12 +9,13 @@ Ext.define('RiskiMarket.controller.Products', {
             controller: {
                 '*': {
                     input: function (input) {
-                        var product = this.getProductsStore()
-                                          .findRecord('key', input);
+                        var product = this.getProductsStore().findRecord(
+                            'key', input, 0, false, true, true);
                         if (product != null) {
-                            this.getProductsGrid()
-                                .getSelectionModel()
-                                .select(product);
+                            var selectionModel = this.getProductsGrid()
+                                                     .getSelectionModel();
+                            selectionModel.deselectAll();
+                            selectionModel.select(product);
                             return false;
                         }
                     }
