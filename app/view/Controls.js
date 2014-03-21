@@ -37,16 +37,33 @@ Ext.define('RiskiMarket.view.Controls', {
         }
     ],
 
+    getGrid: function () {
+        return this.getComponent(1);
+    },
+
     getStore: function () {
-        return this.getComponent(1).getStore();
+        return this.getGrid().getStore();
     },
 
     setActiveProduct: function (product) {
+        this.getGrid().getSelectionModel().select(product);
+    },
 
+    getActiveProduct: function (product) {
+        var selection = this.getGrid().getSelectionModel().getSelection();
+        if (selection.length === 0) {
+            return null;
+        } else {
+            return selection[0];
+        }
     },
 
     addProduct: function (product) {
-        this.getStore().append(product.copy());
+        this.getStore().append(product);
         this.setActiveProduct(product);
+    },
+
+    removeProduct: function () {
+
     }
 });

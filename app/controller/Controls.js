@@ -21,7 +21,7 @@ Ext.define('RiskiMarket.controller.Controls', {
                         if (this.getControls().isDisabled()) {
                             this.getControls().setActiveProduct(product);
                         } else {
-                            this.getControls().addProduct(product);
+                            this.getControls().addProduct(product.copy());
                         }
                     }
                 }
