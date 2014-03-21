@@ -38,6 +38,8 @@ Ext.define('RiskiMarket.controller.Main', {
                 } else if (char.match(/^[A-Za-z0-9]$/)) {
                     inputBuffer += char;
                     e.stopPropagation();
+                } else {
+                    controller.fireEvent('specialKey', e.keyCode);
                 }
             }
         }, true);

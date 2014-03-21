@@ -23,6 +23,13 @@ Ext.define('RiskiMarket.controller.Controls', {
                         } else {
                             this.getControls().addProduct(product.copy());
                         }
+                    },
+
+                    specialKey: function (key) {
+                        if (key === 8) { // backspace
+                            // TODO
+                            return false;
+                        }
                     }
                 }
             }
