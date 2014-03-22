@@ -4,6 +4,7 @@ Ext.define('RiskiMarket.model.User', {
     fields: [
         { name: 'key',     type: 'string' },
         { name: 'name',    type: 'string' },
-        { name: 'balance', type: 'int'    }
+        { name: 'balance', type: 'int'    },
+        { name: 'admin',   type: 'bool'   }
     ]
 });

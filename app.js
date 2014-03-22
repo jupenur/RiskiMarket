@@ -24,9 +24,24 @@ function generateTestData() {
     );
 
     RiskiMarket.app.getStore('Users').add(
-        { key: 'QWERTYUI', name: 'Juho Nurminen', balance:  85.72 },
-        { key: 'ASDFGHJK', name: 'Mikko Lainio',  balance: 132.05 },
-        { key: 'ZXCVBNMM', name: 'Eero Pihkala',  balance:  97.99 }
+        {
+            key     : 'QWERTYUI',
+            name    : 'Juho Nurminen',
+            balance : 85.72,
+            admin   : true
+        },
+        {
+            key     : 'ASDFGHJK',
+            name    : 'Mikko Lainio',
+            balance : 132.05,
+            admin   : true
+        },
+        {
+            key     : 'ZXCVBNMM',
+            name    : 'Eero Pihkala',
+            balance : 97.99,
+            admin   : false
+        }
     );
 
     location.reload();
