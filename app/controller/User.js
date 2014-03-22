@@ -32,6 +32,7 @@ Ext.define('RiskiMarket.controller.User', {
                             && input.match(/\D/)
                             && this.admin.get('key') !== input) {
                             this.view.show();
+                            this.fireEvent('formopen');
                             this.user = this.getUsersStore().findRecord(
                                 'key', input, 0, false, true, true);
                         }
