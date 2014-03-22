@@ -1,5 +1,6 @@
 Ext.define('RiskiMarket.view.User', {
     extend: 'Ext.window.Window',
+    xtype: 'app-user',
     requires:[ 'Ext.form.Panel' ],
 
     title: 'Käyttäjä',
@@ -7,10 +8,31 @@ Ext.define('RiskiMarket.view.User', {
     draggable: false,
     resizable: false,
     modal: true,
-    width: 400,
     layout: 'fit',
     items: {
         xtype: 'form',
-        border: false
+        border: false,
+        bodyPadding: 10,
+        items: [
+            {
+                xtype: 'hiddenfield',
+                name: 'key'
+            },
+            {
+                xtype: 'textfield',
+                fieldLabel: 'Nimi',
+                name: 'name'
+            },
+            {
+                xtype: 'numberfield',
+                fieldLabel: 'Saldo',
+                name: 'balance'
+            },
+            {
+                xtype: 'checkbox',
+                fieldLabel: 'Ylläpitäjä',
+                name: 'admin'
+            }
+        ]
     }
 });
