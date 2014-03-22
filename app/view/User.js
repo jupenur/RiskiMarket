@@ -1,7 +1,13 @@
 Ext.define('RiskiMarket.view.User', {
     extend: 'Ext.window.Window',
     xtype: 'app-user',
-    requires:[ 'Ext.form.Panel' ],
+    requires:[
+        'Ext.form.Panel',
+        'Ext.form.field.Hidden',
+        'Ext.form.field.Text',
+        'Ext.form.field.Number',
+        'Ext.form.field.Checkbox'
+    ],
 
     title: 'Käyttäjä',
     closable: false,
