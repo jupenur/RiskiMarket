@@ -41,9 +41,11 @@ Ext.define('RiskiMarket.controller.User', {
         this.control({
             'app-user': {
                 show: function () {
+                    this.fireEvent('formopen');
                     this.keyMap.enable();
                 },
                 hide: function () {
+                    this.fireEvent('formclose');
                     this.keyMap.disable();
                 }
             },
@@ -58,7 +60,6 @@ Ext.define('RiskiMarket.controller.User', {
                 click: function () {
                     this.view.hide();
                     this.getForm().getForm().reset();
-                    this.fireEvent('formclose');
                 }
             }
         });
@@ -84,7 +85,6 @@ Ext.define('RiskiMarket.controller.User', {
                             && input.match(/\D/)
                             && this.user.get('key') !== input) {
                             this.view.show();
-                            this.fireEvent('formopen');
                             var user = this.getUsersStore().findRecord(
                                 'key', input, 0, false, true, true);
                             if (user === null) {
