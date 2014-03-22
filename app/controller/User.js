@@ -4,12 +4,62 @@ Ext.define('RiskiMarket.controller.User', {
     views: [ 'User' ],
     models: [ 'User' ],
     stores: [ 'Users' ],
-    refs: [{ ref: 'form', selector: 'app-user > form' }],
+    requires: [ 'Ext.util.KeyMap' ],
+
+    refs: [
+        { ref: 'form',         selector: 'app-user > form'  },
+        { ref: 'saveButton',   selector: 'app-user #save'   },
+        { ref: 'cancelButton', selector: 'app-user #cancel' }
+    ],
 
     user: null,
 
     init: function () {
         this.view = this.getUserView().create();
+
+        this.keyMap = new Ext.util.KeyMap({
+            target: document,
+            binding: [
+                {
+                    key: [ 10, 13 ],
+                    fn: function () {
+                        this.getSaveButton().btnEl.dom.click();
+                    },
+                    scope: this
+                },
+                {
+                    key: [ 27 ],
+                    fn: function () {
+                        this.getCancelButton().btnEl.dom.click();
+                    },
+                    scope: this
+                }
+            ]
+        });
+        this.keyMap.disable();
+
+        this.control({
+            'app-user': {
+                show: function () {
+                    this.keyMap.enable();
+                },
+                hide: function () {
+                    this.keyMap.disable();
+                }
+            },
+
+            'app-user #save': {
+                click: function () {
+                    // TODO
+                }
+            },
+
+            'app-user #cancel': {
+                click: function () {
+                    // TODO
+                }
+            }
+        });
 
         this.listen({
             controller: {
