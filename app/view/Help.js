@@ -1,5 +1,6 @@
 Ext.define('RiskiMarket.view.Help', {
     extend: 'Ext.container.Container',
+    requires: [ 'Ext.layout.container.Table' ],
 
     selected: 1,
 

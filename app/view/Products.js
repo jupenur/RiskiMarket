@@ -1,6 +1,7 @@
 Ext.define('RiskiMarket.view.Products', {
     extend: 'Ext.grid.Panel',
     xtype: 'app-products',
+    requires: [ 'Ext.grid.column.Number' ],
 
     border: false,
     viewConfig: {

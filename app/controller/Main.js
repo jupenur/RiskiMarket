@@ -6,7 +6,8 @@ Ext.define('RiskiMarket.controller.Main', {
         'RiskiMarket.controller.Controls',
         'RiskiMarket.controller.Help',
         'RiskiMarket.controller.Products',
-        'RiskiMarket.controller.Login'
+        'RiskiMarket.controller.Login',
+        'RiskiMarket.controller.User'
     ],
 
     statics: {

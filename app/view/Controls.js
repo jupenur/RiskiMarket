@@ -1,6 +1,7 @@
 Ext.define('RiskiMarket.view.Controls', {
     extend: 'Ext.container.Container',
     xtype: 'app-controls',
+    requires: [ 'Ext.grid.column.Number' ],
 
     layout: 'vbox',
     height: '100%',

@@ -1,6 +1,10 @@
 Ext.define('RiskiMarket.view.help.HelpSection',{
     extend: 'Ext.container.Container',
     xtype: 'app-helpsection',
+    requires: [
+        'Ext.form.Label',
+        'Ext.layout.container.Table'
+    ],
 
     layout: {
         type: 'table',
@@ -38,8 +42,8 @@ Ext.define('RiskiMarket.view.help.HelpSection',{
         var label = this.getComponent('idLabel');
         var text = this.getComponent('textPanel');
         var labelString = "<h1>"+this.helpId+"</h1>";
-        console.log(Ext.getDisplayName(label));
-        console.log(Ext.getDisplayName(text));
+        // console.log(Ext.getDisplayName(label));
+        // console.log(Ext.getDisplayName(text));
         label.html = labelString;
         text.html = this.helpText;
         // text.bodyCls = 'background:red;';
