@@ -6,11 +6,11 @@ Ext.define('RiskiMarket.view.User', {
     closable: false,
     draggable: false,
     resizable: false,
+    modal: true,
     width: 400,
     layout: 'fit',
     items: {
         xtype: 'form',
-        border: false,
-        modal: true
+        border: false
     }
 });
