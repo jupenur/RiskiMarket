@@ -4,6 +4,7 @@ Ext.define('RiskiMarket.controller.User', {
     views: [ 'User' ],
     models: [ 'User' ],
     stores: [ 'Users' ],
+    refs: [{ ref: 'form', selector: 'app-user > form' }],
 
     admin: null,
     user: null,
@@ -35,6 +36,10 @@ Ext.define('RiskiMarket.controller.User', {
                             this.fireEvent('formopen');
                             this.user = this.getUsersStore().findRecord(
                                 'key', input, 0, false, true, true);
+                            if (this.user === null) {
+                                this.user = this.getUserModel().create();
+                            }
+                            this.getForm().loadRecord(this.user);
                         }
                     }
                 }
