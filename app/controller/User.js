@@ -56,7 +56,9 @@ Ext.define('RiskiMarket.controller.User', {
 
             'app-user #cancel': {
                 click: function () {
-                    // TODO
+                    this.view.hide();
+                    this.getForm().getForm().reset();
+                    this.fireEvent('formclose');
                 }
             }
         });
