@@ -6,7 +6,6 @@ Ext.define('RiskiMarket.controller.User', {
     stores: [ 'Users' ],
     refs: [{ ref: 'form', selector: 'app-user > form' }],
 
-    admin: null,
     user: null,
 
     init: function () {
@@ -17,7 +16,7 @@ Ext.define('RiskiMarket.controller.User', {
                 '*': {
                     login: function (user) {
                         if (user.get('admin') === true) {
-                            this.admin = user;
+                            this.user = user;
                         } else {
                             this.user = null;
                         }
@@ -28,18 +27,18 @@ Ext.define('RiskiMarket.controller.User', {
                     },
 
                     input: function (input) {
-                        if (   this.admin
+                        if (   this.user
                             && input.length === 8
                             && input.match(/\D/)
-                            && this.admin.get('key') !== input) {
+                            && this.user.get('key') !== input) {
                             this.view.show();
                             this.fireEvent('formopen');
-                            this.user = this.getUsersStore().findRecord(
+                            var user = this.getUsersStore().findRecord(
                                 'key', input, 0, false, true, true);
-                            if (this.user === null) {
-                                this.user = this.getUserModel().create();
+                            if (user === null) {
+                                user = this.getUserModel().create();
                             }
-                            this.getForm().loadRecord(this.user);
+                            this.getForm().loadRecord(user);
                         }
                     }
                 }
