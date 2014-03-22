@@ -52,7 +52,13 @@ Ext.define('RiskiMarket.controller.User', {
 
             'app-user #save': {
                 click: function () {
-                    // TODO
+                    this.view.hide();
+                    this.getForm().updateRecord();
+                    var user = this.getForm().getRecord();
+                    if (user.phantom) {
+                        this.getUsersStore().add(user);
+                    }
+                    this.getForm().getForm().reset();
                 }
             },
 
@@ -89,6 +95,7 @@ Ext.define('RiskiMarket.controller.User', {
                                 'key', input, 0, false, true, true);
                             if (user === null) {
                                 user = this.getUserModel().create();
+                                user.set('key', input);
                             }
                             this.getForm().loadRecord(user);
                         }
