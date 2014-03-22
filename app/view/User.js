@@ -40,5 +40,16 @@ Ext.define('RiskiMarket.view.User', {
                 name: 'admin'
             }
         ]
-    }
+    },
+
+    buttons: [
+        {
+            itemId: 'cancel',
+            text: 'Peruuta'
+        },
+        {
+            itemId: 'save',
+            text: 'Tallenna'
+        }
+    ]
 });
