@@ -10,10 +10,7 @@ Ext.define('RiskiMarket.controller.Main', {
     ],
 
     statics: {
-        InputMode: {
-            TEXT: 0,
-            ID: 1
-        }
+        InputMode: { TEXT: 0, ID: 1 }
     },
 
     inputMode: undefined,
@@ -29,7 +26,8 @@ Ext.define('RiskiMarket.controller.Main', {
         this.inputMode = RiskiMarket.controller.Main.InputMode.ID;
         var inputBuffer = '', controller = this;
         document.documentElement.addEventListener('keydown', function (e) {
-            if (controller.inputMode === RiskiMarket.controller.Main.InputMode.ID) {
+            if (controller.inputMode
+                === RiskiMarket.controller.Main.InputMode.ID) {
                 var char = String.fromCharCode(e.keyCode);
                 if (e.keyCode === 13) { // enter
                     controller.fireEvent('input', inputBuffer);

@@ -8,7 +8,8 @@ Ext.define('RiskiMarket.view.Login', {
     width: 250,
     layout: 'fit',
     items: {
-        html: '<p>Lue avainkortti kirjautuaksesi sisään ja tehdäksesi ostoksia.</p>',
+        html: '<p>Lue avainkortti kirjautuaksesi sisään '
+            + 'ja tehdäksesi ostoksia.</p>',
         bodyPadding: '0 20 0 20',
         border: false
     }

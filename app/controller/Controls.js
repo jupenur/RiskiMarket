@@ -28,7 +28,7 @@ Ext.define('RiskiMarket.controller.Controls', {
 
                     specialKey: function (key) {
                         if (key === 8) { // backspace
-							this.removeProduct();
+                            this.removeProduct();
                             return false;
                         }
                     }
@@ -62,6 +62,7 @@ Ext.define('RiskiMarket.controller.Controls', {
 
     removeProduct: function () {
         this.getProductsStore().remove(this.getActiveProduct());
-		this.getCart().getSelectionModel().select(this.getProductsStore().count() - 1);
+        this.getCart().getSelectionModel()
+                      .select(this.getProductsStore().count() - 1);
     }
 });
