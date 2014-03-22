@@ -21,6 +21,7 @@ Ext.define('RiskiMarket.controller.Main', {
         this.getController('Help');
         this.getController('Products');
         this.getController('Login');
+        this.getController('User');
 
         // input modes
         this.inputMode = RiskiMarket.controller.Main.InputMode.ID;
