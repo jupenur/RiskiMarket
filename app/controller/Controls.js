@@ -70,9 +70,25 @@ Ext.define('RiskiMarket.controller.Controls', {
                     },
 
                     logout: function (user) {
+                        var sum = parseFloat(this.getSumField().getValue());
+                        if (!isNaN(sum)) {
+                            user.set('balance', user.get('balance') - sum);
+                            Ext.Msg.show({
+                                title: 'Ostokset veloitettu',
+                                msg: 'Ostokset on veloitettu tililtäsi. '
+                                    + 'Sinut on kirjattu ulos automaattisesti.',
+                                icon: Ext.Msg.INFO,
+                                closable: false,
+                                modal: false
+                            }).setPosition(undefined, 20);
+                            setTimeout(function () {
+                                Ext.Msg.hide();
+                            }, 2000);
+                        }
                         this.user = null;
                         this.getEditHint().setVisible(false);
                         this.getBalanceField().setValue('--');
+                        this.getCart().getStore().removeAll();
                         this.getControls().disable();
                     },
 
