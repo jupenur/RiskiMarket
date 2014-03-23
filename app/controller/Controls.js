@@ -2,8 +2,9 @@ Ext.define('RiskiMarket.controller.Controls', {
     extend: 'Ext.app.Controller',
 
     refs: [
-        { ref: 'controls', selector: 'app-controls'        },
-        { ref: 'cart',     selector: 'app-controls > grid' }
+        { ref: 'controls', selector: 'app-controls'                },
+        { ref: 'cart',     selector: 'app-controls > grid'         },
+        { ref: 'editHint', selector: 'app-controls > #info tbtext' }
     ],
 
     user: null,
@@ -14,11 +15,13 @@ Ext.define('RiskiMarket.controller.Controls', {
                 '*': {
                     login: function (user) {
                         this.user = user;
+                        this.getEditHint().setVisible(user.get('admin'))
                         this.getControls().enable();
                     },
 
                     logout: function (user) {
                         this.user = null;
+                        this.getEditHint().setVisible(false);
                         this.getControls().disable();
                     },
 

@@ -38,6 +38,7 @@ Ext.define('RiskiMarket.view.Controls', {
             tools: [{
                 xtype: 'tbtext',
                 text: 'Muokkaa painamalla enter',
+                hidden: true,
                 style: { color: '#888' }
             }]
         },
