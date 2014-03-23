@@ -4,7 +4,7 @@ Ext.define('RiskiMarket.controller.Controls', {
     refs: [
         { ref: 'controls',    selector: 'app-controls'                },
         { ref: 'cart',        selector: 'app-controls > grid'         },
-        { ref: 'productInfo', selector: 'app-controls > #info' },
+        { ref: 'productInfo', selector: 'app-controls > #info'        },
         { ref: 'editHint',    selector: 'app-controls > #info tbtext' }
     ],
 
