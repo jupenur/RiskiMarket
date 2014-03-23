@@ -8,7 +8,8 @@ Ext.define('RiskiMarket.controller.Main', {
         'RiskiMarket.controller.Products',
         'RiskiMarket.controller.Login',
         'RiskiMarket.controller.User',
-        'RiskiMarket.controller.Product'
+        'RiskiMarket.controller.Product',
+        'RiskiMarket.controller.InputFallback'
     ],
 
     inputMode: 'id',
@@ -21,6 +22,7 @@ Ext.define('RiskiMarket.controller.Main', {
         this.getController('Login');
         this.getController('User');
         this.getController('Product');
+        this.getController('InputFallback');
 
         // input modes
         var inputBuffer = '', controller = this;
