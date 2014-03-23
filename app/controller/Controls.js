@@ -2,10 +2,30 @@ Ext.define('RiskiMarket.controller.Controls', {
     extend: 'Ext.app.Controller',
 
     refs: [
-        { ref: 'controls',    selector: 'app-controls'                },
-        { ref: 'cart',        selector: 'app-controls > grid'         },
-        { ref: 'productInfo', selector: 'app-controls > #info'        },
-        { ref: 'editHint',    selector: 'app-controls > #info tbtext' }
+        {
+            ref: 'controls',
+            selector: 'app-controls'
+        },
+        {
+            ref: 'cart',
+            selector: 'app-controls > grid'
+        },
+        {
+            ref: 'productInfo',
+            selector: 'app-controls > #info'
+        },
+        {
+            ref: 'editHint',
+            selector: 'app-controls > #info tbtext'
+        },
+        {
+            ref: 'sumField',
+            selector: 'app-controls > form > displayfield[name=sum]'
+        },
+        {
+            ref: 'balanceField',
+            selector: 'app-controls > form > displayfield[name=balance]'
+        }
     ],
 
     user: null,
@@ -19,6 +39,22 @@ Ext.define('RiskiMarket.controller.Controls', {
                     } else {
                         this.getProductInfo().getForm().reset();
                     }
+                },
+
+                render: function () {
+                    this.getProductsStore().on('datachanged', function () {
+                        var store = this.getProductsStore();
+                        var count = store.getCount();
+                        if (count === 0) {
+                            this.getSumField().setValue('--');
+                        } else {
+                            var sum = 0;
+                            for (var i = 0; i < count; i++) {
+                                sum += store.getAt(i).get('price');
+                            }
+                            this.getSumField().setValue(sum);
+                        }
+                    }, this);
                 }
             }
         });
@@ -28,13 +64,15 @@ Ext.define('RiskiMarket.controller.Controls', {
                 '*': {
                     login: function (user) {
                         this.user = user;
-                        this.getEditHint().setVisible(user.get('admin'))
+                        this.getEditHint().setVisible(user.get('admin'));
+                        this.getBalanceField().setValue(user.get('balance'));
                         this.getControls().enable();
                     },
 
                     logout: function (user) {
                         this.user = null;
                         this.getEditHint().setVisible(false);
+                        this.getBalanceField().setValue('--');
                         this.getControls().disable();
                     },
 
