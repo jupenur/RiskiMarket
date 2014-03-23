@@ -18,6 +18,7 @@ Ext.define('RiskiMarket.view.Controls', {
         {
             xtype: 'grid',
             flex: 1,
+			emptyText: 'Ostoskori on tyhjä',
             columns: [
                 { header: 'Nimi', dataIndex: 'name', flex: 1 },
                 {
