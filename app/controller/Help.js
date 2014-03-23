@@ -4,35 +4,44 @@ Ext.define('RiskiMarket.controller.Help', {
     refs: [
         { ref: 'helpview', selector: 'app-help' }
     ],
-	initialized: false,
 
-    init: function() {		
-        //this.changeHelpState(1);
-		this.listen({
+    state: null,
+
+    init: function() {
+        this.listen({
             controller: {
-                '*' : {                    
-					
-					login: function() { this.changeHelpState(2);},
-					logout: function() { this.changeHelpState(1);},
-					product: function() { this.changeHelpState(3);}
-                },
-				
+                '*' : {
+                    login: function () { this.changeHelpState(2); },
+
+                    logout: function() {
+                        if (this.state === 2) {
+                            this.changeHelpState(1);
+                        } else if (this.state === 3) {
+                            this.changeHelpState(4);
+                            var self = this;
+                            setTimeout(function () {
+                                self.changeHelpState(1);
+                            }, 1000);
+                        }
+                    },
+
+                    product: function () {
+                        this.changeHelpState(3);
+                    }
+                }
             }
         });
         this.control({
             'app-help': {
-					beforerender: function() {
-						if (!this.initialized){
-							this.changeHelpState(1);
-							this.initialized = true;
-						}
-						
-					},
-				}
+                afterrender: function() {
+                    this.changeHelpState(1);
+                }
+            }
         });
     },
 
     changeHelpState: function(state) {
+        this.state = state;
         this.getHelpview().changeSelection(state);
     }
 });
