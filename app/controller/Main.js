@@ -37,7 +37,8 @@ Ext.define('RiskiMarket.controller.Main', {
                     inputBuffer += char;
                     e.stopPropagation();
                 } else {
-                    controller.fireEvent('specialKey', e.keyCode);
+                    e.preventDefault();
+					controller.fireEvent('specialKey', e.keyCode);
                 }
             }
         }, true);
