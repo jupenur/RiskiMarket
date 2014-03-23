@@ -81,13 +81,38 @@ Ext.define('RiskiMarket.view.Controls', {
                     xtype: 'displayfield',
                     fieldLabel: 'Yhteensä',
                     name: 'sum',
-                    value: '--'
+                    value: '--',
+                    renderer: function (value) {
+                        var number = parseFloat(value);
+                        if (isNaN(number)) {
+                            return value;
+                        } else {
+                            var balance = this.up('form')
+                                              .query('[name=balance]')[0]
+                                              .getValue();
+                            if (balance > number) {
+                                return number.toFixed(2) + ' €';
+                            } else {
+                                return '<span style="color: red">'
+                                    + number.toFixed(2) + ' €'
+                                    + '</span>';
+                            }
+                        }
+                    }
                 },
                 {
                     xtype: 'displayfield',
                     fieldLabel: 'Tilin saldo',
                     name: 'balance',
-                    value: '--'
+                    value: '--',
+                    renderer: function (value) {
+                        var number = parseFloat(value);
+                        if (isNaN(number)) {
+                            return value;
+                        } else {
+                            return number.toFixed(2) + ' €';
+                        }
+                    }
                 }
             ]
         }
