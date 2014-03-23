@@ -89,15 +89,19 @@ Ext.define('RiskiMarket.controller.Product', {
                         if (   this.user
                             && input.length !== 8
                             && input.match(/^\d+$/)) {
-                            this.view.show();
-                            var product = this.getProductsStore().findRecord(
-                                'key', input, 0, false, true, true);
-                            if (product === null) {
-                                product = this.getProductModel().create();
-                                product.set('key', input);
-                            }
-                            this.getForm().loadRecord(product);
+                            this.fireEvent('edit', input);
                         }
+                    },
+
+                    edit: function (key) {
+                        this.view.show();
+                        var product = this.getProductsStore().findRecord(
+                            'key', key, 0, false, true, true);
+                        if (product === null) {
+                            product = this.getProductModel().create();
+                            product.set('key', key);
+                        }
+                        this.getForm().loadRecord(product);
                     }
                 }
             }
