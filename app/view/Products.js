@@ -3,7 +3,7 @@ Ext.define('RiskiMarket.view.Products', {
     xtype: 'app-products',
     requires: [ 'Ext.grid.column.Number' ],
 
-    border: false,
+    margin: '10 5 10 10',
     viewConfig: {
         stripeRows: true,
 

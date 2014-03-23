@@ -12,6 +12,7 @@ Ext.define('RiskiMarket.view.Controls', {
     layout: 'vbox',
     height: '100%',
     disabled: true,
+    maskOnDisable: false,
     defaults: {
         width: '100%'
     },
@@ -22,6 +23,7 @@ Ext.define('RiskiMarket.view.Controls', {
             itemId: 'info',
             title: 'Tuotetiedot',
             bodyPadding: '10 20 5 20',
+            margin: '10 5 5 5',
             items: [
                 {
                     xtype: 'displayfield',
@@ -54,6 +56,7 @@ Ext.define('RiskiMarket.view.Controls', {
         {
             xtype: 'grid',
             flex: 1,
+            margin: 5,
             viewConfig: {
                 emptyText: 'Ostoskori on tyhjä',
                 deferEmptyText: false
@@ -80,6 +83,7 @@ Ext.define('RiskiMarket.view.Controls', {
             xtype: 'form',
             title: 'Summa',
             bodyPadding: '10 20 5 20',
+            margin: '5 5 10 5',
             items: [
                 {
                     xtype: 'displayfield',
