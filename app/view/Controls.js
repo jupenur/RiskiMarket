@@ -33,7 +33,15 @@ Ext.define('RiskiMarket.view.Controls', {
                     xtype: 'displayfield',
                     fieldLabel: 'Hinta',
                     name: 'price',
-                    value: '--'
+                    value: '--',
+                    renderer: function (value) {
+                        var number = parseFloat(value);
+                        if (isNaN(number)) {
+                            return value;
+                        } else {
+                            return number.toFixed(2) + ' €';
+                        }
+                    }
                 }
             ],
             tools: [{
