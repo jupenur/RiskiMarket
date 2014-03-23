@@ -2,14 +2,27 @@ Ext.define('RiskiMarket.controller.Controls', {
     extend: 'Ext.app.Controller',
 
     refs: [
-        { ref: 'controls', selector: 'app-controls'                },
-        { ref: 'cart',     selector: 'app-controls > grid'         },
-        { ref: 'editHint', selector: 'app-controls > #info tbtext' }
+        { ref: 'controls',    selector: 'app-controls'                },
+        { ref: 'cart',        selector: 'app-controls > grid'         },
+        { ref: 'productInfo', selector: 'app-controls > #info' },
+        { ref: 'editHint',    selector: 'app-controls > #info tbtext' }
     ],
 
     user: null,
 
     init: function () {
+        this.control({
+            'app-controls > grid': {
+                selectionchange: function (_, selection) {
+                    if (selection.length > 0) {
+                        this.getProductInfo().loadRecord(selection[0]);
+                    } else {
+                        this.getProductInfo().getForm().reset();
+                    }
+                }
+            }
+        });
+
         this.listen({
             controller: {
                 '*': {
