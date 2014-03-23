@@ -63,6 +63,7 @@ Ext.define('RiskiMarket.view.Controls', {
         },
         {
             xtype: 'grid',
+            title: 'Ostoskori',
             flex: 1,
             margin: 5,
             viewConfig: {
