@@ -6,15 +6,19 @@ Ext.define('RiskiMarket.controller.Controls', {
         { ref: 'cart',     selector: 'app-controls > grid' }
     ],
 
+    user: null,
+
     init: function () {
         this.listen({
             controller: {
                 '*': {
                     login: function (user) {
+                        this.user = user;
                         this.getControls().enable();
                     },
 
                     logout: function (user) {
+                        this.user = null;
                         this.getControls().disable();
                     },
 
@@ -23,6 +27,18 @@ Ext.define('RiskiMarket.controller.Controls', {
                             this.setActiveProduct(product);
                         } else {
                             this.addProduct(product.copy());
+                        }
+                    },
+
+                    input: function (input) {
+                        if (input === '' && this.user
+                            && this.user.get('admin')) {
+                            var product = this.getActiveProduct();
+                            if (product !== null) {
+                                this.fireEvent('editproduct',
+                                    product.get('key'));
+                                return false;
+                            }
                         }
                     },
 
