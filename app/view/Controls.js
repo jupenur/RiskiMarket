@@ -73,14 +73,21 @@ Ext.define('RiskiMarket.view.Controls', {
             })
         },
         {
-            xtype: 'panel',
-            title: 'Total',
+            xtype: 'form',
+            title: 'Summa',
+            bodyPadding: '10 20 5 20',
             items: [
                 {
                     xtype: 'displayfield',
-                    fieldlabel: 'saldo',
-                    value: '12345',
-                    height: 100
+                    fieldLabel: 'Yhteensä',
+                    name: 'sum',
+                    value: '--'
+                },
+                {
+                    xtype: 'displayfield',
+                    fieldLabel: 'Tilin saldo',
+                    name: 'balance',
+                    value: '--'
                 }
             ]
         }
