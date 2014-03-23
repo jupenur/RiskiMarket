@@ -79,7 +79,7 @@ Ext.define('RiskiMarket.controller.InputFallback', {
                                 icon: Ext.Msg.WARNING,
                                 closable: false,
                                 modal: false
-                            });
+                            }).setPosition(undefined, 20);
                             setTimeout(function () {
                                 Ext.Msg.hide();
                             }, 1000);
