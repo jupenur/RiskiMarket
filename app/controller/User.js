@@ -9,7 +9,8 @@ Ext.define('RiskiMarket.controller.User', {
     refs: [
         { ref: 'form',         selector: 'app-user > form'  },
         { ref: 'saveButton',   selector: 'app-user #save'   },
-        { ref: 'cancelButton', selector: 'app-user #cancel' }
+        { ref: 'cancelButton', selector: 'app-user #cancel' },
+        { ref: 'deleteButton', selector: 'app-user #delete' }
     ],
 
     user: null,
@@ -67,6 +68,23 @@ Ext.define('RiskiMarket.controller.User', {
                     this.view.hide();
                     this.getForm().getForm().reset();
                 }
+            },
+
+            'app-user #delete': {
+                click: function () {
+                    Ext.Msg.confirm('Käyttäjän poisto',
+                        'Haluatko varmasti poistaa käyttäjän '
+                        + this.getForm().getRecord().get('name')
+                        + '?',
+                        function (button) {
+                            if (button === 'yes') {
+                                this.view.hide();
+                                this.getUsersStore().remove(
+                                    this.getForm().getRecord());
+                                this.getForm().getForm().reset();
+                            }
+                        }, this);
+                }
             }
         });
 
@@ -104,6 +122,7 @@ Ext.define('RiskiMarket.controller.User', {
                             user.set('key', key);
                         }
                         this.getForm().loadRecord(user);
+                        this.getDeleteButton().setDisabled(user.phantom);
                     }
                 }
             }
