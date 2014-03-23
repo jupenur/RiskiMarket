@@ -28,7 +28,7 @@ Ext.define('RiskiMarket.controller.Controls', {
         },
 		{
 			ref: 'helloPanel',
-			selector: 'app-controls > hello'
+			selector: 'app-controls > #hello'
 		}
     ],
 
@@ -162,16 +162,22 @@ Ext.define('RiskiMarket.controller.Controls', {
     },
 	
 	setUserGreeting: function(username) {
-		var helloStart = "<h3 align='center'>",
-			helloUserStart = 'Hei ',
-			helloUserEnd = '! ',
-			helloEnd = 'Tervetuloa RiskiMarketiin!</h3>';			
+		var helloStart = "<h2 align='center'>";
+		var	helloUserStart = 'Hei ';
+		var	helloUserEnd = '! ';
+		var	helloEnd = 'Tervetuloa RiskiMarketiin!</h2>';
+		var panel = this.getHelloPanel()
+		var string;
 		
-		//console.log(Ext.getDisplayName(panel));
+		console.log(Ext.getDisplayName(panel));		
 									
-		if (username != null)
-			this.getHelloPanel.html = helloStart+helloUserStart+username+helloUserEnd+helloEnd;
+		if (username != null)		
+			string = helloStart+helloUserStart+username+helloUserEnd+helloEnd;
 		else
-			this.getHelloPanel.html = helloStart+helloEnd;	
+			string = helloStart+helloEnd;
+		console.log(string);
+		panel.update(string);
+		
+		
 	}
 });
