@@ -5,7 +5,8 @@ Ext.define('RiskiMarket.view.Controls', {
         'Ext.grid.column.Number',
         'Ext.panel.Panel',
         'Ext.form.Panel',
-        'Ext.toolbar.TextItem'
+        'Ext.toolbar.TextItem',
+        'Ext.form.field.Display'
     ],
 
     layout: 'vbox',
