@@ -1,7 +1,12 @@
 Ext.define('RiskiMarket.view.Controls', {
     extend: 'Ext.container.Container',
     xtype: 'app-controls',
-    requires: [ 'Ext.grid.column.Number' ],
+    requires: [
+        'Ext.grid.column.Number',
+        'Ext.panel.Panel',
+        'Ext.form.Panel',
+        'Ext.toolbar.TextItem'
+    ],
 
     layout: 'vbox',
     height: '100%',
@@ -12,8 +17,29 @@ Ext.define('RiskiMarket.view.Controls', {
 
     items: [
         {
-            html: 'product info',
-            height: 100
+            xtype: 'form',
+            itemId: 'info',
+            title: 'Tuotetiedot',
+            bodyPadding: '10 20 5 20',
+            items: [
+                {
+                    xtype: 'displayfield',
+                    fieldLabel: 'Nimi',
+                    name: 'name',
+                    value: '--'
+                },
+                {
+                    xtype: 'displayfield',
+                    fieldLabel: 'Hinta',
+                    name: 'price',
+                    value: '--'
+                }
+            ],
+            tools: [{
+                xtype: 'tbtext',
+                text: 'Muokkaa painamalla enter',
+                style: { color: '#888' }
+            }]
         },
         {
             xtype: 'grid',
