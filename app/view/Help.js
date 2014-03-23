@@ -3,6 +3,7 @@ Ext.define('RiskiMarket.view.Help', {
     requires: [ 'Ext.layout.container.Table' ],
 
     selected: 1,
+	
 
     xtype: 'app-help',
     layout: {
@@ -12,7 +13,8 @@ Ext.define('RiskiMarket.view.Help', {
     },
 
     requires: ['RiskiMarket.view.help.HelpSection'],
-
+	
+	
     defaults: {
         xtype: 'panel',
         // width: '100%',
@@ -22,6 +24,11 @@ Ext.define('RiskiMarket.view.Help', {
     },
     items: [
         {
+            xtype: 'app-helpsection',
+            helpText: '<h3>Kirjaudu Sisään</h3>'
+                + 'Lue avainkortti avainkortinlukijalla'
+        },
+		{
             xtype: 'app-helpsection',
             helpText: '<h3>Ostoskori on tyhjä</h3>'
                 + 'Lue tuotteen viivakoodi lisätäksesi se ostoskoriin'
