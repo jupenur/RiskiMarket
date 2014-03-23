@@ -25,7 +25,11 @@ Ext.define('RiskiMarket.controller.Controls', {
         {
             ref: 'balanceField',
             selector: 'app-controls > form > displayfield[name=balance]'
-        }
+        },
+		{
+			ref: 'helloPanel',
+			selector: 'app-controls > hello'
+		}
     ],
 
     user: null,
@@ -67,6 +71,7 @@ Ext.define('RiskiMarket.controller.Controls', {
                         this.getEditHint().setVisible(user.get('admin'));
                         this.getBalanceField().setValue(user.get('balance'));
                         this.getControls().enable();
+						this.setUserGreeting(user.get('name'));
                     },
 
                     logout: function (user) {
@@ -90,6 +95,7 @@ Ext.define('RiskiMarket.controller.Controls', {
                         this.getBalanceField().setValue('--');
                         this.getCart().getStore().removeAll();
                         this.getControls().disable();
+						this.setUserGreeting(null);
                     },
 
                     product: function (product) {
@@ -153,5 +159,19 @@ Ext.define('RiskiMarket.controller.Controls', {
             this.getCart().getSelectionModel()
                           .select(this.getProductsStore().count() - 1);
         }
-    }
+    },
+	
+	setUserGreeting: function(username) {
+		var helloStart = "<h3 align='center'>",
+			helloUserStart = 'Hei ',
+			helloUserEnd = '! ',
+			helloEnd = 'Tervetuloa RiskiMarketiin!</h3>';			
+		
+		//console.log(Ext.getDisplayName(panel));
+									
+		if (username != null)
+			this.getHelloPanel.html = helloStart+helloUserStart+username+helloUserEnd+helloEnd;
+		else
+			this.getHelloPanel.html = helloStart+helloEnd;	
+	}
 });

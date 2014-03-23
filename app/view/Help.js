@@ -42,16 +42,9 @@ Ext.define('RiskiMarket.view.Help', {
         },
         {
             xtype: 'app-helpsection',
-            helpText: '<h3>Tuotetta ei Löydy!</h3>'
-                + 'Lue uusi tuote!<br>'
-                + 'Jos olet Admin, voit lisätä uuden tuotteen.'
-        },
-        {
-            xtype: 'app-helpsection',
-            helpText: '<h3>Käyttäjää ei löydy!</h3>'
-                + 'Pyydä lähintä RiskiMarket-adminia lisäämään sinut '
-                + 'käyttäjäksi'
-        },
+            helpText: '<h3>Virheellinen koodi!</h3>'
+                + 'Yritä uudestaan!<br>'                
+        },        
         {
             xtype: 'app-helpsection',
             helpText: '<h3>Saldo ei riitä!</h3>'

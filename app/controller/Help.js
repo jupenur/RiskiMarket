@@ -13,7 +13,8 @@ Ext.define('RiskiMarket.controller.Help', {
                 '*' : {                    
 					
 					login: function() { this.changeHelpState(2);},
-					logout: function() { this.changeHelpState(1);}
+					logout: function() { this.changeHelpState(1);},
+					product: function() { this.changeHelpState(3);}
                 },
 				
             }
