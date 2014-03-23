@@ -89,12 +89,12 @@ Ext.define('RiskiMarket.controller.Product', {
                         if (   this.user
                             && input.length !== 8
                             && input.match(/^\d+$/)) {
-                            this.fireEvent('edit', input);
+                            this.fireEvent('editproduct', input);
                             return false;
                         }
                     },
 
-                    edit: function (key) {
+                    editproduct: function (key) {
                         this.view.show();
                         var product = this.getProductsStore().findRecord(
                             'key', key, 0, false, true, true);

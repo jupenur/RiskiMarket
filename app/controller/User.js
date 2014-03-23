@@ -90,16 +90,20 @@ Ext.define('RiskiMarket.controller.User', {
                             && input.length === 8
                             && input.match(/\D/)
                             && this.user.get('key') !== input) {
-                            this.view.show();
-                            var user = this.getUsersStore().findRecord(
-                                'key', input, 0, false, true, true);
-                            if (user === null) {
-                                user = this.getUserModel().create();
-                                user.set('key', input);
-                            }
-                            this.getForm().loadRecord(user);
+                            this.fireEvent('edituser', input);
                             return false;
                         }
+                    },
+
+                    edituser: function (key) {
+                        this.view.show();
+                        var user = this.getUsersStore().findRecord(
+                            'key', key, 0, false, true, true);
+                        if (user === null) {
+                            user = this.getUserModel().create();
+                            user.set('key', key);
+                        }
+                        this.getForm().loadRecord(user);
                     }
                 }
             }
