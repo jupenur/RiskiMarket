@@ -5,7 +5,8 @@ Ext.define('RiskiMarket.view.Product', {
         'Ext.form.Panel',
         'Ext.form.field.Hidden',
         'Ext.form.field.Text',
-        'Ext.form.field.Number'
+        'Ext.form.field.Number',
+        'Ext.toolbar.Toolbar'
     ],
 
     title: 'Tuote',
@@ -36,14 +37,25 @@ Ext.define('RiskiMarket.view.Product', {
         ]
     },
 
-    buttons: [
-        {
-            itemId: 'cancel',
-            text: 'Peruuta'
-        },
-        {
-            itemId: 'save',
-            text: 'Tallenna'
-        }
-    ]
+    dockedItems: [{
+        xtype: 'toolbar',
+        dock: 'bottom',
+        ui: 'footer',
+        defaultType: 'button',
+        items: [
+            {
+                itemId: 'delete',
+                text: 'Poista'
+            },
+            '->',
+            {
+                itemId: 'cancel',
+                text: 'Peruuta'
+            },
+            {
+                itemId: 'save',
+                text: 'Tallenna'
+            }
+        ]
+    }]
 });

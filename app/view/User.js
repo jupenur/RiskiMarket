@@ -6,7 +6,8 @@ Ext.define('RiskiMarket.view.User', {
         'Ext.form.field.Hidden',
         'Ext.form.field.Text',
         'Ext.form.field.Number',
-        'Ext.form.field.Checkbox'
+        'Ext.form.field.Checkbox',
+        'Ext.toolbar.Toolbar'
     ],
 
     title: 'Käyttäjä',
@@ -42,14 +43,25 @@ Ext.define('RiskiMarket.view.User', {
         ]
     },
 
-    buttons: [
-        {
-            itemId: 'cancel',
-            text: 'Peruuta'
-        },
-        {
-            itemId: 'save',
-            text: 'Tallenna'
-        }
-    ]
+    dockedItems: [{
+        xtype: 'toolbar',
+        dock: 'bottom',
+        ui: 'footer',
+        defaultType: 'button',
+        items: [
+            {
+                itemId: 'delete',
+                text: 'Poista'
+            },
+            '->',
+            {
+                itemId: 'cancel',
+                text: 'Peruuta'
+            },
+            {
+                itemId: 'save',
+                text: 'Tallenna'
+            }
+        ]
+    }]
 });

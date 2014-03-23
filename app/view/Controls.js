@@ -1,7 +1,13 @@
 Ext.define('RiskiMarket.view.Controls', {
     extend: 'Ext.container.Container',
     xtype: 'app-controls',
-    requires: [ 'Ext.grid.column.Number' ],
+    requires: [
+        'Ext.grid.column.Number',
+        'Ext.panel.Panel',
+        'Ext.form.Panel',
+        'Ext.toolbar.TextItem',
+        'Ext.form.field.Display'
+    ],
 
     layout: 'vbox',
     height: '100%',
@@ -12,8 +18,38 @@ Ext.define('RiskiMarket.view.Controls', {
 
     items: [
         {
-            html: 'product info',
-            height: 100
+            xtype: 'form',
+            itemId: 'info',
+            title: 'Tuotetiedot',
+            bodyPadding: '10 20 5 20',
+            items: [
+                {
+                    xtype: 'displayfield',
+                    fieldLabel: 'Nimi',
+                    name: 'name',
+                    value: '--'
+                },
+                {
+                    xtype: 'displayfield',
+                    fieldLabel: 'Hinta',
+                    name: 'price',
+                    value: '--',
+                    renderer: function (value) {
+                        var number = parseFloat(value);
+                        if (isNaN(number)) {
+                            return value;
+                        } else {
+                            return number.toFixed(2) + ' €';
+                        }
+                    }
+                }
+            ],
+            tools: [{
+                xtype: 'tbtext',
+                text: 'Muokkaa painamalla enter',
+                hidden: true,
+                style: { color: '#888' }
+            }]
         },
         {
             xtype: 'grid',
@@ -38,14 +74,46 @@ Ext.define('RiskiMarket.view.Controls', {
             })
         },
         {
-            xtype: 'panel',
-            title: 'Total',
+            xtype: 'form',
+            title: 'Summa',
+            bodyPadding: '10 20 5 20',
             items: [
                 {
                     xtype: 'displayfield',
-                    fieldlabel: 'saldo',
-                    value: '12345',
-                    height: 100
+                    fieldLabel: 'Yhteensä',
+                    name: 'sum',
+                    value: '--',
+                    renderer: function (value) {
+                        var number = parseFloat(value);
+                        if (isNaN(number)) {
+                            return value;
+                        } else {
+                            var balance = this.up('form')
+                                              .query('[name=balance]')[0]
+                                              .getValue();
+                            if (balance > number) {
+                                return number.toFixed(2) + ' €';
+                            } else {
+                                return '<span style="color: red">'
+                                    + number.toFixed(2) + ' €'
+                                    + '</span>';
+                            }
+                        }
+                    }
+                },
+                {
+                    xtype: 'displayfield',
+                    fieldLabel: 'Tilin saldo',
+                    name: 'balance',
+                    value: '--',
+                    renderer: function (value) {
+                        var number = parseFloat(value);
+                        if (isNaN(number)) {
+                            return value;
+                        } else {
+                            return number.toFixed(2) + ' €';
+                        }
+                    }
                 }
             ]
         }
