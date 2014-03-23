@@ -62,14 +62,26 @@ Ext.define('RiskiMarket.view.Controls', {
                 deferEmptyText: false
             },
             columns: [
-                { header: 'Nimi', dataIndex: 'name', flex: 1 },
+                {
+                    header: 'Nimi',
+                    dataIndex: 'name',
+                    flex: 1,
+                    sortable: false,
+                    draggable: false,
+                    hideable: false,
+                    resizable: false
+                },
                 {
                     xtype: 'numbercolumn',
                     header: 'Hinta / €',
                     dataIndex: 'price',
                     format: '0.00',
                     align: 'right',
-                    width: 100
+                    width: 100,
+                    sortable: false,
+                    draggable: false,
+                    hideable: false,
+                    resizable: false
                 },
             ],
             store: Ext.create('Ext.data.Store', {
