@@ -131,8 +131,11 @@ Ext.define('RiskiMarket.controller.Controls', {
     },
 
     removeProduct: function () {
-        this.getProductsStore().remove(this.getActiveProduct());
-        this.getCart().getSelectionModel()
-                      .select(this.getProductsStore().count() - 1);
+        var product = this.getActiveProduct();
+        if (product !== null) {
+            this.getProductsStore().remove(product);
+            this.getCart().getSelectionModel()
+                          .select(this.getProductsStore().count() - 1);
+        }
     }
 });
