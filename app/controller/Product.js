@@ -90,6 +90,7 @@ Ext.define('RiskiMarket.controller.Product', {
                             && input.length !== 8
                             && input.match(/^\d+$/)) {
                             this.fireEvent('edit', input);
+                            return false;
                         }
                     },
 

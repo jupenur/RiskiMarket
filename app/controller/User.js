@@ -98,6 +98,7 @@ Ext.define('RiskiMarket.controller.User', {
                                 user.set('key', input);
                             }
                             this.getForm().loadRecord(user);
+                            return false;
                         }
                     }
                 }
