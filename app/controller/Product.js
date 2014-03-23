@@ -9,7 +9,8 @@ Ext.define('RiskiMarket.controller.Product', {
     refs: [
         { ref: 'form',         selector: 'app-product > form'  },
         { ref: 'saveButton',   selector: 'app-product #save'   },
-        { ref: 'cancelButton', selector: 'app-product #cancel' }
+        { ref: 'cancelButton', selector: 'app-product #cancel' },
+        { ref: 'deleteButton', selector: 'app-product #delete' }
     ],
 
     user: null,
@@ -67,6 +68,23 @@ Ext.define('RiskiMarket.controller.Product', {
                     this.view.hide();
                     this.getForm().getForm().reset();
                 }
+            },
+
+            'app-user #delete': {
+                click: function () {
+                    Ext.Msg.confirm('Tuotteen poisto',
+                        'Haluatko varmasti poistaa tuotteen '
+                        + this.getForm().getRecord().get('name')
+                        + '?',
+                        function (button) {
+                            if (button === 'yes') {
+                                this.view.hide();
+                                this.getProductsStore().remove(
+                                    this.getForm().getRecord());
+                                this.getForm().getForm().reset();
+                            }
+                        }, this);
+                }
             }
         });
 
@@ -103,6 +121,7 @@ Ext.define('RiskiMarket.controller.Product', {
                             product.set('key', key);
                         }
                         this.getForm().loadRecord(product);
+                        this.getDeleteButton().setDisabled(product.phantom);
                     }
                 }
             }
