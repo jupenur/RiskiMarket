@@ -70,7 +70,7 @@ Ext.define('RiskiMarket.controller.Product', {
                 }
             },
 
-            'app-user #delete': {
+            'app-product #delete': {
                 click: function () {
                     Ext.Msg.confirm('Tuotteen poisto',
                         'Haluatko varmasti poistaa tuotteen '
