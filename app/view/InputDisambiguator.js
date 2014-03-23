@@ -23,9 +23,11 @@ Ext.define('RiskiMarket.view.InputDisambiguator', {
         },
         items: [
             {
+                itemId: 'addProduct',
                 text: 'Lisää tuote'
             },
             {
+                itemId: 'addUser',
                 text: 'Lisää käyttäjä'
             }
         ]

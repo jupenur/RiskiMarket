@@ -33,6 +33,20 @@ Ext.define('RiskiMarket.controller.InputFallback', {
                     this.fireEvent('formclose');
                     this.keyMap.disable();
                 }
+            },
+
+            'app-inputdisambiguator #addProduct': {
+                click: function () {
+                    this.view.hide();
+                    this.fireEvent('editproduct', this.input);
+                }
+            },
+
+            'app-inputdisambiguator #addUser': {
+                click: function () {
+                    this.view.hide();
+                    this.fireEvent('edituser', this.input);
+                }
             }
         });
 
@@ -52,6 +66,7 @@ Ext.define('RiskiMarket.controller.InputFallback', {
                     },
 
                     input: function (input) {
+                        this.input = input;
                         if (   this.user
                             && input.length === 8
                             && input.match(/^\d+$/)) {
