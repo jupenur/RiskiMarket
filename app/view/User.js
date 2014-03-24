@@ -10,6 +10,7 @@ Ext.define('RiskiMarket.view.User', {
         'Ext.toolbar.Toolbar'
     ],
 
+	defaultFocus: 'name',
     title: 'Käyttäjä',
     closable: false,
     draggable: false,
@@ -28,7 +29,8 @@ Ext.define('RiskiMarket.view.User', {
             {
                 xtype: 'textfield',
                 fieldLabel: 'Nimi',
-                name: 'name'
+                itemId: 'name',
+				name: 'name'
             },
             {
                 xtype: 'numberfield',

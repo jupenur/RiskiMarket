@@ -9,7 +9,8 @@ Ext.define('RiskiMarket.view.Product', {
         'Ext.toolbar.Toolbar'
     ],
 
-    title: 'Tuote',
+    defaultFocus: 'name',
+	title: 'Tuote',
     closable: false,
     draggable: false,
     resizable: false,
@@ -29,8 +30,8 @@ Ext.define('RiskiMarket.view.Product', {
             {
                 xtype: 'textfield',
                 fieldLabel: 'Nimi',
-                name: 'name',
-				hasFocus: true
+				itemId: 'name',
+                name: 'name',				
             },
             {
                 xtype: 'numberfield',
