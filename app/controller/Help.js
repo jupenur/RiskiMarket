@@ -26,7 +26,9 @@ Ext.define('RiskiMarket.controller.Help', {
                     },
 
                     product: function () {
-                        this.changeHelpState(3);
+                        if (this.state === 2) {
+                            this.changeHelpState(3);
+                        }
                     }
                 }
             }
