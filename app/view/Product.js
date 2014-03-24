@@ -22,12 +22,15 @@ Ext.define('RiskiMarket.view.Product', {
         items: [
             {
                 xtype: 'hiddenfield',
-                name: 'key'
+                fieldLabel: 'Tuotekoodi',
+				name: 'key',
+				
             },
             {
                 xtype: 'textfield',
                 fieldLabel: 'Nimi',
-                name: 'name'
+                name: 'name',
+				hasFocus: true
             },
             {
                 xtype: 'numberfield',
