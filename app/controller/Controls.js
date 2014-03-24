@@ -82,7 +82,7 @@ Ext.define('RiskiMarket.controller.Controls', {
                                 Ext.Msg.show({
                                     title: 'Ostokset veloitettu',
                                     msg: 'Ostokset on veloitettu tililtäsi. '
-                                        + 'Saldo: '+ user.get('balance').toFixed(2) + ' Eur<br> '
+                                        + 'Saldo: '+ user.get('balance').toFixed(2) + ' €<br> '
                                         + 'Sinut on kirjattu ulos automaattisesti',
                                     icon: Ext.Msg.INFO,
                                     closable: false,
