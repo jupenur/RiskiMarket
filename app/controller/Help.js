@@ -21,7 +21,7 @@ Ext.define('RiskiMarket.controller.Help', {
                             var self = this;
                             setTimeout(function () {
                                 self.changeHelpState(1);
-                            }, 1000);
+                            }, 5000);
                         }
                     },
 

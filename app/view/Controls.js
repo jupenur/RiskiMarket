@@ -18,7 +18,7 @@ Ext.define('RiskiMarket.view.Controls', {
     },	
     items: [
 		{
-			xtype: 'label',
+			//xtype: 'label',
 			itemId: 'hello',			
 			html: "<h2 align='center'>Tervetuloa RiskiMarketiin!</h2>",
 			margin: '10 5 5 5',			

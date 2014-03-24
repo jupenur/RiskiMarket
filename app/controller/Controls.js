@@ -76,19 +76,35 @@ Ext.define('RiskiMarket.controller.Controls', {
 
                     logout: function (user) {
                         var sum = parseFloat(this.getSumField().getValue());
-                        if (!isNaN(sum)) {
-                            user.set('balance', user.get('balance') - sum);
-                            Ext.Msg.show({
-                                title: 'Ostokset veloitettu',
-                                msg: 'Ostokset on veloitettu tililtäsi. '
-                                    + 'Sinut on kirjattu ulos automaattisesti.',
-                                icon: Ext.Msg.INFO,
-                                closable: false,
-                                modal: false
-                            }).setPosition(undefined, 20);
-                            setTimeout(function () {
-                                Ext.Msg.hide();
-                            }, 2000);
+                        if (!isNaN(sum)) {                           
+						    if ( user.get('balance') >= sum ) {
+								user.set('balance', user.get('balance') - sum);
+								Ext.Msg.show({
+									title: 'Ostokset veloitettu',
+									msg: 'Ostokset on veloitettu tililtäsi. '
+										+ 'Tilin saldo: '+ user.get('balance') + ' Eur<br> '
+										+ 'Sinut on kirjattu ulos automaattisesti',
+									icon: Ext.Msg.INFO,
+									closable: false,
+									modal: false
+								}).setPosition(undefined, 20);
+								setTimeout(function () {
+									Ext.Msg.hide();
+								}, 5000);
+							}
+							else {
+								Ext.Msg.show({
+									title: 'Saldo ei riitä!',
+									msg: 'Ostoksia ei veloitettu tililtäsi, koska tilin saldo ei riitä.<br>' 				
+										+ 'Sinut on kirjattu ulos automaattisesti',
+									icon: Ext.Msg.INFO,
+									closable: false,
+									modal: false
+								}).setPosition(undefined, 20);
+								setTimeout(function () {
+									Ext.Msg.hide();
+								}, 5000);
+							}
                         }
                         this.user = null;
                         this.getEditHint().setVisible(false);
