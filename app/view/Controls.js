@@ -8,37 +8,36 @@ Ext.define('RiskiMarket.view.Controls', {
         'Ext.toolbar.TextItem',
         'Ext.form.field.Display'
     ],
-	
+
     userBackground: '#338C26',
     adminBackground: '#FCC917',
-	
+
     layout: 'vbox',
     height: '100%',
     disabled: true,
     maskOnDisable: false,
     defaults: {
         width: '100%'
-    },	
+    },
     items: [
-		{
-			//xtype: 'label',
-			itemId: 'hello',			
-			html: "<h2 align='center'>Tervetuloa RiskiMarketiin!</h2>",
-			margin: '10 5 5 5'
-		},
+        {
+            itemId: 'hello',
+            html: "<h2 align='center'>Tervetuloa RiskiMarketiin!</h2>",
+            margin: '10 5 5 5'
+        },
         {
             xtype: 'form',
             itemId: 'info',
             title: 'Tuotetiedot',
             bodyPadding: '10 20 5 20',
-            margin: '10 5 5 5',
+            margin: 5,
             items: [
                 {
                     xtype: 'hiddenfield',
                     fieldLabel: 'Tuotekoodi',
                     name: 'key',
-                },            
-                {                    
+                },
+                {
                     xtype: 'displayfield',
                     fieldLabel: 'Nimi',
                     name: 'name',
@@ -103,8 +102,8 @@ Ext.define('RiskiMarket.view.Controls', {
                 autoLoad: true,
                 autoSync: true,
                 proxy: 'memory'
-            })          
-            
+            })
+
         },
         {
             xtype: 'form',
@@ -155,15 +154,15 @@ Ext.define('RiskiMarket.view.Controls', {
     setGreetBackground : function(user) {
         var hello = this.getComponent('hello');
         if (user) {
-	        if (user.get('admin')) {
-		        hello.setBodyStyle('background',this.adminBackground);
-	        }
-	        else {
-		        hello.setBodyStyle('background',this.userBackground);
-	        }
+            if (user.get('admin')) {
+                hello.setBodyStyle('background',this.adminBackground);
+            }
+            else {
+                hello.setBodyStyle('background',this.userBackground);
+            }
         }
         else {
-	        hello.setBodyStyle('background',null);
+            hello.setBodyStyle('background',null);
         }
     }
 });
