@@ -10,7 +10,7 @@ Ext.define('RiskiMarket.controller.Product', {
         { ref: 'form',         selector: 'app-product > form'  },
         { ref: 'saveButton',   selector: 'app-product #save'   },
         { ref: 'cancelButton', selector: 'app-product #cancel' },
-        { ref: 'deleteButton', selector: 'app-product #delete' }
+        { ref: 'deleteButton', selector: 'app-product #delete' },
     ],
 
     user: null,
@@ -122,9 +122,10 @@ Ext.define('RiskiMarket.controller.Product', {
                         }
                         this.getForm().loadRecord(product);
                         this.getDeleteButton().setDisabled(product.phantom);
-                    }
+                    }                    
                 }
             }
+
         });
     }
 });

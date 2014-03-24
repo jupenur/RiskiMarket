@@ -146,7 +146,31 @@ Ext.define('RiskiMarket.controller.Controls', {
 						}
                     }
                 }
+            },
+            store: {
+                '#Products' : {
+                    datachanged : function (store) {                        
+                        console.log("data changed");
+                        var cart = this.getCart().getStore();
+                        var info = this.getProductInfo().getForm().getRecord();
+                        console.log(info);
+                        var match;
+                        cart.each(function (rec) {
+                            match = store.findRecord('key',rec.get('key'));
+                            if (match != null) {
+                                rec.set('name',match.get('name'));
+                                rec.set('price',match.get('price'));
+                            }
+                        });
+                        match = store.findRecord('key',info.get('key'));
+                        console.log(match);                        
+                        if (match != null)
+                            this.getProductInfo().loadRecord(match);
+                        
+                    }
+                }
             }
+            
         });
     },
 

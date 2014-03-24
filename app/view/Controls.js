@@ -34,6 +34,11 @@ Ext.define('RiskiMarket.view.Controls', {
             margin: '10 5 5 5',
             items: [
                 {
+                    xtype: 'hiddenfield',
+                    fieldLabel: 'Tuotekoodi',
+                    name: 'key',
+                },            
+                {                    
                     xtype: 'displayfield',
                     fieldLabel: 'Nimi',
                     name: 'name',
@@ -98,7 +103,8 @@ Ext.define('RiskiMarket.view.Controls', {
                 autoLoad: true,
                 autoSync: true,
                 proxy: 'memory'
-            })
+            })          
+            
         },
         {
             xtype: 'form',
